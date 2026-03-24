@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --bt-dark: #040810;
+  --bt-surface: #080f1e;
+  --bt-card: #0b1628;
+  --bt-border: #1a2d4a;
+  --bt-cyan: #00e5ff;
+  --bt-cyan-dim: rgba(0, 229, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bt-dark);
+  color: #e2e8f0;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #040810;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2d4a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4470;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 229, 255, 0.2);
+  color: white;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #00e5ff, #7c3aed, #00e5ff);
+  background-size: 300% 300%;
+  animation: borderGlow 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes borderGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 4px 24px rgba(0, 229, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Pulse dot animation */
+@keyframes pulseDot {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 229, 255, 0);
+  }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
